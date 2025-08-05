@@ -464,7 +464,7 @@ LifecycleNode::LifecycleNodeInterfaceImpl::change_state(
   if (cb_return_code == node_interfaces::LifecycleNodeInterface::CallbackReturn::ERROR) {
     RCLCPP_WARN(
       node_logging_interface_->get_logger(),
-      "Error occurred while doing error handling.");
+      "Callback returned an error during change_state from %s to %s.", initial_state.label(), state_machine_.current_state.label());
 
     auto error_cb_code = execute_callback(current_state_id, initial_state);
     auto error_cb_label = get_label_for_return_code(error_cb_code);
